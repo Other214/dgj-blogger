@@ -5,4 +5,10 @@ Blogger::Application.routes.draw do
   end
   resources :tags
   resources :authors
+
+  resources :author_sessions, only: [ :new, :create, :destroy ]
+
+  match 'login'  => 'author_sessions#new'
+  match 'logout' => 'author_sessions#destroy'
+  
 end
